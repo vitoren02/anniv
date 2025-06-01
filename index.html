@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Anniversary</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(120deg, #ff9a9e 0%, #fad0c4 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 90%;
+      animation: fadeIn 2s ease-in-out;
+      display: none;
+    }
+
+    .card h1 {
+      color: #ff4d6d;
+      font-size: 2rem;
+    }
+
+    .card p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-top: 1rem;
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center/contain;
+      animation: float 6s linear infinite;
+    }
+
+    .start-button {
+      position: absolute;
+      padding: 1rem 2rem;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      animation: bounce 1s infinite;
+      transition: 0.3s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts"></div>
+  <button class="start-button" id="startButton">Click me if you love me! 💘</button>
+  <div class="card" id="card">
+    <h1>Happy Anniversary, Baby! 💖</h1>
+    <p>Happy 9 months anniversary, By. Sometimes I still can’t believe how far we’ve come. We’ve gone through so much, and even though we’re separated by distance, we’re still standing strong. It’s never been easy, but you always make it feel possible. Every time I hear your voice, see your smile through the screen, or read your sweet and simple messages, I feel so much peace in my heart.
+    <br><br>
+    I know being in a long-distance relationship is not easy, but you’ve made every effort feel worth it. You’re not just my partner, you’re my home — the one I come back to when I’m tired, the one I share joy with when I’m happy. Thank you for always being patient, for trusting me, and for constantly choosing me despite all the challenges we face.
+    <br><br>
+    I promise to keep protecting this love, to keep nurturing this bond, until the day comes when distance no longer separates us. When we no longer have to count time zones, cities, or days — because we’ll finally be together. I love you, By. More than words can ever fully express. 💑✨</p>
+  </div>
+
+  <script>
+    const heartsContainer = document.querySelector('.hearts');
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.animationDuration = `${Math.random() * 3 + 3}s`;
+      heart.style.animationDelay = `${Math.random() * 5}s`;
+      heartsContainer.appendChild(heart);
+    }
+
+    const button = document.getElementById('startButton');
+    const card = document.getElementById('card');
+    let clickCount = 0;
+
+    const encouragements = [
+      "Click again, By! 💪",
+      "Almost there, Baby! 😘",
+      "Just one more! 😍",
+      "You’re doing great! 💖",
+      "Last one, promise! 💞"
+    ];
+
+    button.addEventListener('click', () => {
+      clickCount++;
+      if (clickCount < encouragements.length) {
+        button.textContent = encouragements[clickCount];
+        button.style.top = `${Math.random() * 80 + 10}vh`;
+        button.style.left = `${Math.random() * 80 + 10}vw`;
+        button.style.position = 'absolute';
+      } else {
+        button.style.display = 'none';
+        card.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
